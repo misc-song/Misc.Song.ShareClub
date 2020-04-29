@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.20" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Misc.Song.ShareClub.DataAccess\Misc.Song.ShareClub.DataAccess.csproj" />
+    <ProjectReference Include="..\Misc.Song.ShareClub.IDAL\Misc.Song.ShareClub.IDAL.csproj" />
+    <ProjectReference Include="..\Misc.Song.ShareClub.Models\Misc.Song.ShareClub.Models.csproj" />
+  </ItemGroup>
+
+</Project>
