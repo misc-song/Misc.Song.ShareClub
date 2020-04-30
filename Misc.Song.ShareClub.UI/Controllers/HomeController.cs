@@ -25,22 +25,6 @@ namespace Misc.Song.ShareClub.UI.Controllers
 
         public IActionResult Index()
         {
-            UserInfo userInfo = new UserInfo()
-            {
-                userName = "songhejun",
-                userPwd = "123",
-                gender = "nv",
-                avatar = ""
-            };
-           var ok =   _userInfoService.AddEntity(userInfo);
-            if(ok)
-            {
-                ViewData["ok"] = "ok";
-            }
-            else
-            {
-                ViewData["ok"] = "no";
-            }
             return View();
         }
 

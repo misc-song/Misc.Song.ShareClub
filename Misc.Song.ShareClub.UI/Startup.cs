@@ -33,9 +33,22 @@ namespace Misc.Song.ShareClub.UI
             services.AddSession();
 
             services.AddDbContext<ShareContext>(options => options.UseMySQL(Configuration.GetConnectionString("DBStr")));
+            services.AddScoped<IFileTypeService, FileTypeService>();
+            services.AddScoped<IFileTypeDal, FileTypeDal>();
+            services.AddScoped<IBaseDal<FileType>, BaseDal<FileType>>();
+
             services.AddScoped<IUserInfoService, UserinfoService>();
             services.AddScoped<IUserInfoDal, UserInfoDal>();
             services.AddScoped<IBaseDal<UserInfo>, BaseDal<UserInfo>>();
+
+            services.AddScoped<IUserLogService, UserLogService>();
+            services.AddScoped<IUserLogDal, UserLogDal>();
+            services.AddScoped<IBaseDal<UserLog>, BaseDal<UserLog>>();
+
+            services.AddScoped<IFileInfoService, FileInfoService>();
+            services.AddScoped<IFileInfoDal, FileInfoDal>();
+            services.AddScoped<IBaseDal<FileInfo>, BaseDal<FileInfo>>();
+
 
             services.AddControllersWithViews();
         }

@@ -16,5 +16,6 @@ namespace Misc.Song.ShareClub.DataAccess
         public DbSet<UserInfo> userInfos { get; set; }
         public DbSet<FileInfo> fileInfos { get; set; }
         public DbSet<UserLog> userLogs { get; set; }
+        public DbSet<FileType> fileTypes { get; set; }
     }
 }

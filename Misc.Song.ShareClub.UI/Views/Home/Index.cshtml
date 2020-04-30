@@ -2,8 +2,80 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <div>@ViewData["ok"]</div>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .search_container {
+        text-align: center;
+    }
+
+    .search_input {
+        border: none;
+        outline: none;
+        border-radius: 0;
+        background: white;
+        width: 450px;
+        height: 40px;
+        vertical-align: top;
+        padding-left: 10px;
+    }
+
+    .search_button {
+        border: none;
+        outline: none;
+        border-radius: 0;
+        width: 80px;
+        height: 40px;
+        vertical-align: top;
+    }
+
+
+    .main_container {
+        width: 875px;
+        height: 400px;
+        margin: 0 auto;
+        padding-left: 15px;
+        margin-top: 55px;
+        border: 1px red solid;
+        background: linear-gradient(rgba(255,255,255,.15) 0,rgba(255,255,255,.15) 100%) !important
+    }
+
+
+    .main_item {
+        border: 1px red solid;
+        width: 128px;
+        height: 67px;
+        float: left;
+        margin-top: 15px;
+        margin-right: 15px;
+    }
+</style>
+
+<div style="height:40px;">
+    <div style="float:left;">
+       @* <iframe id="fancybox-frame" name="fancybox-frame1588232425974" frameborder="0" scrolling="no" hspace="0" src="http://i.tianqi.com/index.php?c=code&a=getcode&id=35&h=55&w=200"></iframe>*@
+        小挂件
+    </div>
+    <div style="float:right">
+        登录 注册
+    </div>
+</div>
+<header>
+    <div>
+        <div style="text-align:center;margin-top:40px;margin-bottom:25px;">
+            <h2>Share Club</h2>
+        </div>
+    </div>
+</header>
+<div class="search_container">
+    <input class="search_input" type="text" /><input class="search_button" type="button" value="搜索" />
+</div>
+<div>
+    <div class="main_container">
+        <div class="main_item"></div>
+        <div class="main_item"></div>
+        <div class="main_item"></div>
+        <div class="main_item"></div>
+        <div class="main_item"></div>
+        <div class="main_item"></div>
+        <div class="main_item"></div>
+    </div>
 </div>
