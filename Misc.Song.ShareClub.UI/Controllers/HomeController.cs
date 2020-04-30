@@ -15,13 +15,8 @@ namespace Misc.Song.ShareClub.UI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-      //  public OADBContext dBContext { set; get; }
         public IUserInfoService _userInfoService { get; }
-        //public AccountController(IAccountService accountService, OADBContext oADBContext)
-        //{
-        //    dBContext = oADBContext;
-        //    _accountService = accountService;
-        //}
+   
         public HomeController(ILogger<HomeController> logger,IUserInfoService userInfoService)
         {
             _logger = logger;
