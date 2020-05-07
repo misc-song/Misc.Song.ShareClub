@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Misc.Song.ShareClub.IBLL;
 using Misc.Song.ShareClub.Models;
+using Misc.Song.ShareClub.UI.Filters;
 using Misc.Song.ShareClub.UI.Models;
 
 namespace Misc.Song.ShareClub.UI.Controllers
@@ -22,7 +23,7 @@ namespace Misc.Song.ShareClub.UI.Controllers
             _logger = logger;
             this._userInfoService = userInfoService;
         }
-
+        [LoginFilter]
         public IActionResult Index()
         {
             return View();

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Misc.Song.ShareClub.DataAccess;
 
 namespace Misc.Song.ShareClub.DataAccess.Migrations
 {
     [DbContext(typeof(ShareContext))]
-    partial class ShareContextModelSnapshot : ModelSnapshot
+    [Migration("20200506084857_addInfo")]
+    partial class addInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,8 +43,8 @@ namespace Misc.Song.ShareClub.DataAccess.Migrations
                     b.Property<string>("fileName")
                         .HasColumnType("text");
 
-                    b.Property<long>("fileSize")
-                        .HasColumnType("bigint");
+                    b.Property<int>("fileSize")
+                        .HasColumnType("int");
 
                     b.Property<string>("path")
                         .HasColumnType("text");

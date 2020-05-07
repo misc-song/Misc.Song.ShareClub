@@ -5,16 +5,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.4.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Misc.Song.ShareClub.BLL\Misc.Song.ShareClub.BLL.csproj" />
     <ProjectReference Include="..\Misc.Song.ShareClub.DAL\Misc.Song.ShareClub.DAL.csproj" />
     <ProjectReference Include="..\Misc.Song.ShareClub.DataAccess\Misc.Song.ShareClub.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="hosting.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 

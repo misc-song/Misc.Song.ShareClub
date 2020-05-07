@@ -1,0 +1,343 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-fileinput/css/fileinput-rtl.css" rel="stylesheet" />
+</head>
+
+
+<body>
+    <div class="modal fade" id="uploadBookModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">上传文件</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="file" id="testfile" name="test" multiple />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="button" id="uploadFileBtn" value="上传文件" />
+
+
+
+    <table class="table table-hover" id="dataTable">
+    </table>
+
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/lib/bootstrap-fileinput/js/fileinput.js"></script>
+    <script src="~/lib/bootstrap-fileinput/js/plugins/piexif.js"></script>
+    <script src="~/lib/bootstrap-fileinput/js/plugins/purify.js"></script>
+    <script src="~/lib/bootstrap-fileinput/js/plugins/sortable.js"></script>
+    <script src="~/lib/bootstrap-fileinput/js/locales/zh.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+    <!-- Latest compiled and minified Locales -->
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+    <style>
+        .download {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-image: url(../images/download.png);
+            background-size: 18px 18px;
+        }
+    </style>
+</body>
+</html>
+
+<script>
+    $('#uploadBookModal').on('hidden.bs.modal', function () {
+        console.log("ok123");
+        $("#dataTable").bootstrapTable('refresh');
+        //LoadData();
+    })
+    function ShowUploadModal() {
+        $('#testfile').fileinput({
+            language: 'zh',
+            uploadUrl: "/FileManager/UploadFile",
+            showCaption: true,
+            showUpload: true,
+            showRemove: true,
+            showPreview: false,
+            showClose: true,
+            maxFileCount: 1,
+            autoReplace: true,
+            allowedFileTypes: null,
+            uploadAsync: false,
+            // allowedFileExtensions: ['*'],
+            browseClass: 'btn btn-primary',
+
+        }).on('filebatchuploadsuccess', function (event, data, previewId, index) {//同步上传回调
+            // LoadData();
+            alert("666");
+
+        });
+        //  $('#testfile').fileinput('refresh', { uploadUrl: "Upload?bookId=" + id });
+
+        $("#uploadBookModal").modal('show')
+
+    }
+
+    //$('#testfile').on('filebatchpreupload', function (event, data, previewId, index) {
+    //    alert("666");
+
+    //    LoadData();
+    //});
+
+
+
+    $("#uploadFileBtn").click(function () {
+        ShowUploadModal();
+    });
+    $(function () {
+        LoadData();
+    })
+
+
+
+
+
+    function operateFormatter(value, row, index) {
+        return [
+            '<a class="like" href="javascript:void(0)" title="Like">',
+            '<i class="download"></i>',
+            '</a>  ',
+        ].join('')
+    }
+
+    window.operateEvents = {
+        'click .like': function (e, value, row, index) {
+            //alert('You click like action, row: ' + JSON.stringify(row))
+            Download(row);
+
+        },
+        'click .remove': function (e, value, row, index) {
+            $table.bootstrapTable('remove', {
+                field: 'id',
+                values: [row.id]
+            })
+        }
+    }
+
+    function Download(row) {
+        window.open("/Result/Download?id=" + row.id);
+
+    }
+
+    function LoadData() {
+        console.log("data loaded");
+        $("#dataTable").bootstrapTable({
+            url: "/Result/GetData",  //请求地址
+            striped: true, //是否显示行间隔色
+            pageNumber: 1, //初始化加载第一页
+            pagination: true,//是否分页
+            sidePagination: 'server',//server:服务器端分页|client：前端分页
+            pageSize: 5,//单页记录数
+            pageList: [5, 10, 20],//可选择单页记录数
+            //showRefresh: true,//刷新按钮
+            //queryParams: function (params) {//上传服务器的参数
+            //    var temp = {
+            //        offset: params.offset + 0,// SQL语句起始索引
+            //        pageNumber: params.limit  // 每页显示数量
+            //    };
+            //    return temp;
+            //},
+            columns: [{
+                title: 'id',
+                field: 'id',
+                sortable: true
+            }, {
+                title: '文件名称',
+                field: 'fileName',
+                sortable: true
+            }, {
+                title: '上传时间',
+                field: 'uploadTime',
+                sortable: true
+            }, {
+                title: '上传者',
+                field: 'userName',
+            }, {
+                title: '下载量',
+                field: 'downloadCount',
+            }, {
+                title: '浏览量',
+                field: 'pageView',
+            }, {
+                title: '文件大小',
+                field: 'fileSize',
+            }, {
+
+                title: '路径',
+                field: 'path',
+            }, {
+
+                title: '文件类别',
+                field: 'fType',
+            },
+            {
+                field: 'operate',
+                title: 'Item Operate',
+                align: 'center',
+                clickToSelect: false,
+                events: window.operateEvents,
+                formatter: operateFormatter
+            }
+            ]
+        });
+
+    }
+
+
+
+
+
+
+
+</script>
+
+<script>
+    var $table = $('#table')
+    var $remove = $('#remove')
+    var selections = []
+
+    function getIdSelections() {
+        return $.map($table.bootstrapTable('getSelections'), function (row) {
+            return row.id
+        })
+    }
+
+    function responseHandler(res) {
+        $.each(res.rows, function (i, row) {
+            row.state = $.inArray(row.id, selections) !== -1
+        })
+        return res
+    }
+
+    function detailFormatter(index, row) {
+        var html = []
+        $.each(row, function (key, value) {
+            html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+        })
+        return html.join('')
+    }
+
+    function totalTextFormatter(data) {
+        return 'Total'
+    }
+
+    function totalNameFormatter(data) {
+        return data.length
+    }
+
+    function totalPriceFormatter(data) {
+        var field = this.field
+        return '$' + data.map(function (row) {
+            return +row[field].substring(1)
+        }).reduce(function (sum, i) {
+            return sum + i
+        }, 0)
+    }
+
+    function initTable() {
+        $table.bootstrapTable('destroy').bootstrapTable({
+            height: 550,
+            locale: $('#locale').val(),
+            columns: [
+                [{
+                    field: 'state',
+                    checkbox: true,
+                    rowspan: 2,
+                    align: 'center',
+                    valign: 'middle'
+                }, {
+                    title: 'Item ID',
+                    field: 'id',
+                    rowspan: 2,
+                    align: 'center',
+                    valign: 'middle',
+                    sortable: true,
+                    footerFormatter: totalTextFormatter
+                }, {
+                    title: 'Item Detail',
+                    colspan: 3,
+                    align: 'center'
+                }],
+                [{
+                    field: 'name',
+                    title: 'Item Name',
+                    sortable: true,
+                    footerFormatter: totalNameFormatter,
+                    align: 'center'
+                }, {
+                    field: 'price',
+                    title: 'Item Price',
+                    sortable: true,
+                    align: 'center',
+                    footerFormatter: totalPriceFormatter
+                }, {
+                    field: 'operate',
+                    title: 'Item Operate',
+                    align: 'center',
+                    clickToSelect: false,
+                    events: window.operateEvents,
+                    formatter: operateFormatter
+                }]
+            ]
+        })
+        $table.on('check.bs.table uncheck.bs.table ' +
+            'check-all.bs.table uncheck-all.bs.table',
+            function () {
+                $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
+
+                // save your data, here just save the current page
+                selections = getIdSelections()
+                // push or splice the selections if you want to save all data selections
+            })
+        $table.on('all.bs.table', function (e, name, args) {
+            console.log(name, args)
+        })
+        $remove.click(function () {
+            var ids = getIdSelections()
+            $table.bootstrapTable('remove', {
+                field: 'id',
+                values: ids
+            })
+            $remove.prop('disabled', true)
+        })
+    }
+
+    function mounted() {
+        initTable()
+
+        $('#locale').change(initTable)
+    }
+</script>

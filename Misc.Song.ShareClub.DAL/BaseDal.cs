@@ -83,11 +83,11 @@ namespace Misc.Song.ShareClub.DAL
             total = data.Count();
             if (IsAsc)
             {
-                return data.OrderBy(orderByLambda);
+                return data.OrderBy(orderByLambda).Skip(pageIndex * PageSize).Take(PageSize);
             }
             else
             {
-                return data.OrderByDescending(orderByLambda);
+                return data.OrderByDescending(orderByLambda).Skip(pageIndex * PageSize).Take(PageSize);
             }
         }
 

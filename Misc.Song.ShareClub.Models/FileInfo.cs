@@ -11,7 +11,7 @@ namespace Misc.Song.ShareClub.Models
         public int id { get; set; }
         public string path { get; set; }
         public string fileName { get; set; }
-        public int fileSize { get; set; }
+        public long fileSize { get; set; }
         public int PageView { get; set; }  //访问量量
         public int downloadCount { get; set; }  //下载量
         public DateTime UploadTime { get; set; }                //文件上传时间
