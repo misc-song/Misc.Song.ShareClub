@@ -16,9 +16,12 @@ namespace Misc.Song.ShareClub.UI
         {
             var config = new ConfigurationBuilder().AddJsonFile("hosting.json").Build();
             var urls = config.GetSection("server.urls").Value;
-            WebHost.CreateDefaultBuilder(args).UseUrls(urls).UseStartup<Startup>().Build().Run();
+            WebHost.CreateDefaultBuilder(args).UseKestrel(options =>
+            {
+                options.Limits.MaxRequestBodySize = int.MaxValue;
+            }).UseUrls(urls).UseStartup<Startup>().Build().Run();
         }
 
-     
+
     }
 }

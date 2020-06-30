@@ -44,7 +44,7 @@
 
 
 
-
+    <div id="Message"></div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -97,8 +97,12 @@
 
         }).on('filebatchuploadsuccess', function (event, data, previewId, index) {//同步上传回调
             // LoadData();
-            alert("666");
-
+            //  alert("上传成功，");
+            $("#Message").html(
+                '<div class="alert alert-success alert-dismissible fade show" id="message">\
+                    <button type="button" class="close" data-dismiss="alert" >&times;</button>\
+                    <strong>上传成功!</strong>\
+                </div>');
         });
         //  $('#testfile').fileinput('refresh', { uploadUrl: "Upload?bookId=" + id });
 

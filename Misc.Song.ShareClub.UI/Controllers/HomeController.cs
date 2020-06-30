@@ -23,7 +23,7 @@ namespace Misc.Song.ShareClub.UI.Controllers
             _logger = logger;
             this._userInfoService = userInfoService;
         }
-        [LoginFilter]
+      //  [LoginFilter]
         public IActionResult Index()
         {
             return View();

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,10 +36,18 @@ namespace Misc.Song.ShareClub.UI
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => false;
-               // options.MinimumSameSitePolicy = SameSiteMode.None;
+                // options.MinimumSameSitePolicy = SameSiteMode.None;
+         
+
+            });
+            services.Configure<FormOptions>(options =>
+            {
+                options.ValueLengthLimit = int.MaxValue;
+                options.MultipartBodyLengthLimit = int.MaxValue;// 60000000; 
+                options.MultipartHeadersLengthLimit = int.MaxValue;
             });
 
-            services.AddSession();
+                services.AddSession();
 
             services.AddDbContext<ShareContext>(options => options.UseMySQL(Configuration.GetConnectionString("DBStr")));
             services.AddScoped<IFileTypeService, FileTypeService>();
@@ -86,7 +95,7 @@ namespace Misc.Song.ShareClub.UI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Result}/{action=Index}/{id?}");
             });
         }
     }
