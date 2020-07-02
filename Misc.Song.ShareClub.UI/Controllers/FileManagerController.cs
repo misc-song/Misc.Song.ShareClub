@@ -36,10 +36,10 @@ namespace Misc.Song.ShareClub.UI.Controllers
             {
                 id = int.Parse(uid);
             }
-           var uifo= _userInfoService.GetEntity(u => u.id == id);
+            var uifo = _userInfoService.GetEntity(u => u.id == id);
 
-               //读取文件
-               var files = Request.Form.Files;
+            //读取文件
+            var files = Request.Form.Files;
             if (files.Count <= 0)              //上传的文件为空返回错误
             {
                 return new JsonResult(new { ReturnCode = 500, serverData = "Server Error" });
@@ -49,8 +49,8 @@ namespace Misc.Song.ShareClub.UI.Controllers
                 var Guid = System.Guid.NewGuid().ToString("N");
                 var fileExtension = file.FileName.Split('.');
                 var path = System.AppDomain.CurrentDomain.BaseDirectory;
-                string fileFullName = "Uploads\\" + Guid + $".{fileExtension.Last()}";//拼接文件路径名称
-                                                                                      // long fileSize = file.Length;
+                string fileFullName = "Uploads\\" + fileExtension.First() + "_" + Guid + $".{fileExtension.Last()}";//拼接文件路径名称
+                                                                                                            // long fileSize = file.Length;
                 using (FileStream fs = System.IO.File.Create(path + fileFullName))//创建文件流
                 {
                     file.CopyTo(fs);//将上载文件的内容复制到目标流
@@ -65,7 +65,7 @@ namespace Misc.Song.ShareClub.UI.Controllers
                     path = fileFullName,
                     UploadTime = System.DateTime.Now,
                     User = uifo,
-                    
+
                 };
                 _fileInfoService.AddEntity(tempFileInfo);         //问题 一次存储
             }
