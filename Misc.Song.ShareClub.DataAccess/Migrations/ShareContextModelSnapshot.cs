@@ -2,8 +2,11 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Misc.Song.ShareClub.DataAccess;
+
+#nullable disable
 
 namespace Misc.Song.ShareClub.DataAccess.Migrations
 {
@@ -14,14 +17,18 @@ namespace Misc.Song.ShareClub.DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.3")
+                .HasAnnotation("ProductVersion", "8.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
             modelBuilder.Entity("Misc.Song.ShareClub.Models.FileInfo", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("id"));
 
                     b.Property<int?>("FTypeid")
                         .HasColumnType("int");
@@ -30,7 +37,7 @@ namespace Misc.Song.ShareClub.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UploadTime")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int?>("Userid")
                         .HasColumnType("int");
@@ -39,13 +46,13 @@ namespace Misc.Song.ShareClub.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("fileName")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<long>("fileSize")
                         .HasColumnType("bigint");
 
                     b.Property<string>("path")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.HasKey("id");
 
@@ -62,8 +69,10 @@ namespace Misc.Song.ShareClub.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("id"));
+
                     b.Property<string>("typeName")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.HasKey("id");
 
@@ -76,17 +85,19 @@ namespace Misc.Song.ShareClub.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("id"));
+
                     b.Property<string>("avatar")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("gender")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("userName")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("userPwd")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.HasKey("id");
 
@@ -99,23 +110,25 @@ namespace Misc.Song.ShareClub.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("id"));
+
                     b.Property<string>("city")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("dateTime")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("ipAddress")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("latitude")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("longitude")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("userName")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.HasKey("id");
 
@@ -131,6 +144,10 @@ namespace Misc.Song.ShareClub.DataAccess.Migrations
                     b.HasOne("Misc.Song.ShareClub.Models.UserInfo", "User")
                         .WithMany()
                         .HasForeignKey("Userid");
+
+                    b.Navigation("FType");
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

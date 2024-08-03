@@ -10,8 +10,8 @@ namespace Misc.Song.ShareClub.DataAccess
     {
         public ShareContext(DbContextOptions options) : base(options)
         {
-            Database.Migrate();
-            Database.EnsureCreated();
+          //  Database.Migrate();
+           // Database.EnsureCreated();
         }
         public DbSet<UserInfo> userInfos { get; set; }
         public DbSet<FileInfo> fileInfos { get; set; }

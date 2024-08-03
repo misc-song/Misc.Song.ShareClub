@@ -1,21 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29609.76
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Misc.Song.ShareClub.DAL", "Misc.Song.ShareClub.DAL\Misc.Song.ShareClub.DAL.csproj", "{FB9F8015-E0C6-461F-BBDE-00673CB2BB84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Misc.Song.ShareClub.DAL", "Misc.Song.ShareClub.DAL\Misc.Song.ShareClub.DAL.csproj", "{FB9F8015-E0C6-461F-BBDE-00673CB2BB84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Misc.Song.ShareClub.IDAL", "Misc.Song.ShareClub.IDAL\Misc.Song.ShareClub.IDAL.csproj", "{C2E1C2DE-AB86-46B3-B9E7-174A0E11DBE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Misc.Song.ShareClub.IDAL", "Misc.Song.ShareClub.IDAL\Misc.Song.ShareClub.IDAL.csproj", "{C2E1C2DE-AB86-46B3-B9E7-174A0E11DBE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Misc.Song.ShareClub.Models", "Misc.Song.ShareClub.Models\Misc.Song.ShareClub.Models.csproj", "{7D31559D-4077-456E-A1D7-EDF2ADCCCC35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Misc.Song.ShareClub.Models", "Misc.Song.ShareClub.Models\Misc.Song.ShareClub.Models.csproj", "{7D31559D-4077-456E-A1D7-EDF2ADCCCC35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Misc.Song.ShareClub.UI", "Misc.Song.ShareClub.UI\Misc.Song.ShareClub.UI.csproj", "{9381BC95-5B9B-4BCB-9E98-A6A0C2228761}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Misc.Song.ShareClub.UI", "Misc.Song.ShareClub.UI\Misc.Song.ShareClub.UI.csproj", "{9381BC95-5B9B-4BCB-9E98-A6A0C2228761}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Misc.Song.ShareClub.DataAccess", "Misc.Song.ShareClub.DataAccess\Misc.Song.ShareClub.DataAccess.csproj", "{B1BBC388-2278-4BF6-A0F0-C24FE9558049}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Misc.Song.ShareClub.DataAccess", "Misc.Song.ShareClub.DataAccess\Misc.Song.ShareClub.DataAccess.csproj", "{B1BBC388-2278-4BF6-A0F0-C24FE9558049}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Misc.Song.ShareClub.IBLL", "Misc.Song.ShareClub.IBLL\Misc.Song.ShareClub.IBLL.csproj", "{87E24867-0A64-49DA-821C-7D787B634ADE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Misc.Song.ShareClub.IBLL", "Misc.Song.ShareClub.IBLL\Misc.Song.ShareClub.IBLL.csproj", "{87E24867-0A64-49DA-821C-7D787B634ADE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Misc.Song.ShareClub.BLL", "Misc.Song.ShareClub.BLL\Misc.Song.ShareClub.BLL.csproj", "{CF5AE5E1-0B04-47ED-A26F-90C9A8C2D5B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Misc.Song.ShareClub.BLL", "Misc.Song.ShareClub.BLL\Misc.Song.ShareClub.BLL.csproj", "{CF5AE5E1-0B04-47ED-A26F-90C9A8C2D5B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Misc.Song.ShareClub.App", "Misc.Song.ShareClub.App\Misc.Song.ShareClub.App.csproj", "{6C9F1BC9-7A7D-4496-81CD-7D3744029B21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{CF5AE5E1-0B04-47ED-A26F-90C9A8C2D5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF5AE5E1-0B04-47ED-A26F-90C9A8C2D5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF5AE5E1-0B04-47ED-A26F-90C9A8C2D5B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C9F1BC9-7A7D-4496-81CD-7D3744029B21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C9F1BC9-7A7D-4496-81CD-7D3744029B21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C9F1BC9-7A7D-4496-81CD-7D3744029B21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C9F1BC9-7A7D-4496-81CD-7D3744029B21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
