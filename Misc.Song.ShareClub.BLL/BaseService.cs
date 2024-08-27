@@ -73,5 +73,7 @@ namespace Misc.Song.ShareClub.BLL
         {
             return baseDal.GetPageEntity(pageIndex, PageSize, out total, whereLambda, orderByLambda, IsAsc);
         }
+
+     
     }
 }

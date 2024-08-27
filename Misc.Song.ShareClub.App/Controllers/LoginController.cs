@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Misc.Song.ShareClub.IBLL;
+using Misc.Song.ShareClub.Models;
 
 namespace YS.OA.Misc.Controllers
 {
@@ -19,6 +20,10 @@ namespace YS.OA.Misc.Controllers
         }
         //pages
         public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult Register()
         {
             return View();
         }
@@ -55,12 +60,39 @@ namespace YS.OA.Misc.Controllers
         {
             if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(uid))
             {
-                return Content("System Error");
+                return new JsonResult(new { returnCode = 500, serverData = "System Error" });
             }
             int id = int.Parse(uid);
             var uinfo = uInfoService.GetEntity(u => u.id == id);
             return new JsonResult(uinfo);
         }
+        public IActionResult RegisterAction(string Account, string Password, string RePassword)
+        {
+            if (string.IsNullOrEmpty(Account) || string.IsNullOrEmpty(Account) || string.IsNullOrEmpty(RePassword) || Password != RePassword)
+            {
+                return new JsonResult(new { returnCode = 500, serverData = "System Error,Account or Password is null or password not equal repassword" });
+            }
+
+            var uinfo = uInfoService.GetEntity(u => u.userName == Account);
+            if (uinfo != null)
+            {
+                return new JsonResult(new { returnCode = 500, serverData = "System Error,Account is exist" });
+            }
+            UserInfo userInfo = new UserInfo();
+            userInfo.userName = Account;
+            userInfo.userPwd = Password;
+            bool res = uInfoService.AddEntity(userInfo);
+            if(res)
+            {
+                return new JsonResult(new {returnCode = 200, serverData = "ok" });
+            }
+            else
+            {
+                return new JsonResult(new { returnCode = 500, serverData = "System Error" });
+            }
+        }
+
+
 
         public IActionResult SafetyExit()
         {

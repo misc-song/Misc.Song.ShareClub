@@ -49,8 +49,12 @@ namespace Misc.Song.ShareClub.UI.Controllers
                 var Guid = System.Guid.NewGuid().ToString("N");
                 var fileExtension = file.FileName.Split('.');
                 var path = System.AppDomain.CurrentDomain.BaseDirectory;
+                if (!Directory.Exists(path + "Uploads"))//判断文件夹是否存在，不存在则创建
+                { 
+                    Directory.CreateDirectory(path + "Uploads");
+                }
                 string fileFullName = "Uploads\\" + fileExtension.First() + "_" + Guid + $".{fileExtension.Last()}";//拼接文件路径名称
-                                                                                                            // long fileSize = file.Length;
+                                                                                                                    // long fileSize = file.Length;
                 using (FileStream fs = System.IO.File.Create(path + fileFullName))//创建文件流
                 {
                     file.CopyTo(fs);//将上载文件的内容复制到目标流

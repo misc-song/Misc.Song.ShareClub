@@ -16,6 +16,7 @@ namespace Misc.Song.ShareClub.Models
         public string ipAddress { get; set; }   //ip地址
         public string userName { get; set; }    // 匿名访问的时候 用户名为空
         public DateTime dateTime { get; set; }  //用户访问时间
+        public UserInfo user { get; set; }      //用户信息
 
     }
 }

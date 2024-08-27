@@ -1,0 +1,75 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>OA Login</title>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link href="~/css/loginstyle.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="main">
+        <div class="mainin">
+            <h1 class="welcome">登录</h1>
+            <div class="mainin1">
+                <ul>
+                    <li><input name="account" id="account" type="text" placeholder="账号" class="input_box" /></li>
+                    <li><input name="password" id="password" type="password" placeholder="密码" class="input_box" /></li>
+                    <li><input name="password" id="repassword" type="password" placeholder="再次输入密码" class="input_box" /></li>
+                    <li><button id="RegisterBtn" class="submit">注册</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $("#RegisterBtn").click(function () {
+        var form = new FormData();
+        var account = $("#account").val();
+        var passwd = $("#password").val();
+        var passwd = $("#repassword").val();
+
+        if (passwd != repasswd) {
+            alert("两次密码输入不一致");
+            return;
+        }
+        if (account == "" || passwd == ""||repasswd == "") {
+            alert("输入不可为空");
+            return;
+        }
+        else {
+            form.append("Account", account);
+            form.append("Password", passwd);
+            form.append("RePassword", repasswd);
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/Login/RegisterAction',
+            dataType: 'json',
+            data: form,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (data.returnCode != 200) {
+                    alert("用户名或密码错误");
+                    return;
+                }
+                else {
+                    window.location.href = "/Login/Index";
+                }
+
+            },
+            error: function (data) {
+                console.log(data.msg);
+            },
+        });
+    });
+</script>

@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\lib\bootstrap-fileinput\.github\CODE_OF_CONDUCT.md" />
+    <None Include="wwwroot\lib\bootstrap-fileinput\.github\config.yml" />
+    <None Include="wwwroot\lib\bootstrap-fileinput\.github\CONTRIBUTING.md" />
+    <None Include="wwwroot\lib\bootstrap-fileinput\.github\FUNDING.yml" />
+    <None Include="wwwroot\lib\bootstrap-fileinput\.github\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\lib\bootstrap-fileinput\.github\PULL_REQUEST_TEMPLATE.md" />
+    <None Include="wwwroot\lib\bootstrap-fileinput\.github\stale.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

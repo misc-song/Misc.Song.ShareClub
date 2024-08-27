@@ -28,6 +28,7 @@ builder.Services.AddScoped<IBaseDal<UserLog>, BaseDal<UserLog>>();
 builder.Services.AddScoped<IFileInfoService, FileInfoService>();
 builder.Services.AddScoped<IFileInfoDal, FileInfoDal>();
 builder.Services.AddScoped<IBaseDal<FileInfo>, BaseDal<FileInfo>>();
+builder.Services.AddSession();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,6 +38,7 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseStaticFiles();
 
+app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();

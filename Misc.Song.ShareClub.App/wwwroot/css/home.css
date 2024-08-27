@@ -1,0 +1,58 @@
+﻿body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+.search_container {
+    text-align: center;
+  
+}
+.search_item {
+    background-color: rgb(240, 240, 240);
+    margin: 0 auto;
+    width: 545px;
+    height: 40px;
+    border: 1px solid rgb(240, 240, 240);
+}
+.search_input {
+    border: none;
+    outline: none;
+    border-radius: 0;
+    background: white;
+    width: 450px;
+    height: 40px;
+    vertical-align: top;
+    padding-left: 10px;
+   
+}
+
+.search_button {
+    border: none;
+    outline: none;
+    border-radius: 0;
+    width: 80px;
+    height: 40px;
+    vertical-align: top;
+   
+}
+
+
+.main_container {
+    width: 875px;
+    height: 400px;
+    margin: 0 auto;
+    padding-left: 15px;
+    margin-top: 55px;
+    border: 1px red solid;
+    background: linear-gradient(rgba(255,255,255,.15) 0,rgba(255,255,255,.15) 100%) !important
+}
+
+
+.main_item {
+    border: 1px red solid;
+    width: 128px;
+    height: 67px;
+    float: left;
+    margin-top: 15px;
+    margin-right: 15px;
+}

@@ -13,6 +13,18 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/lib/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-fileinput/css/fileinput-rtl.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link href="~/lib/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap-fileinput/js/plugins/sortable.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script src="~/lib/bootstrap-fileinput/js/locales/zh.js"></script>
+    <style>
+        .close{
+            display:none;
+        }
+    </style>
 </head>
 
 
@@ -46,14 +58,7 @@
 
     <div id="Message"></div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="~/lib/bootstrap-fileinput/js/fileinput.js"></script>
-    <script src="~/lib/bootstrap-fileinput/js/plugins/piexif.js"></script>
-    <script src="~/lib/bootstrap-fileinput/js/plugins/purify.js"></script>
-    <script src="~/lib/bootstrap-fileinput/js/plugins/sortable.js"></script>
-    <script src="~/lib/bootstrap-fileinput/js/locales/zh.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
 
@@ -87,7 +92,7 @@
             showUpload: true,
             showRemove: true,
             showPreview: false,
-            showClose: true,
+            showClose: false,
            // maxFileCount: 1,
             autoReplace: true,
             allowedFileTypes: null,
